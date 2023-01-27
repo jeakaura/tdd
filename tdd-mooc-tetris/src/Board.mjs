@@ -9,18 +9,18 @@ export class Board {
   }
 
   toString() {
-    if (this.falling) {
-      return `.${this.color}.
-...
-...
-`;
-    } else {
-      return `...
-...
-...
-`;
+    let s = "";
+    for (let row = 0; row < this.height; row++) {
+      for (let col = 0; col < this.width; col++) {
+        if (this.falling && row == 0 && col == 1) {
+          s += this.color;
+        } else {
+          s += ".";
+        }
+      }
+      s += "\n";
     }
-    
+    return s;
   }
 
   drop(obj) {
