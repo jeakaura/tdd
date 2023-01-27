@@ -25,8 +25,12 @@ export class Board {
   }
 
   drop(obj) {
-    this.falling = true;
-    this.color = obj.color;
+    if (this.falling) {
+      throw new Error("already falling");
+    } else {
+      this.falling = true;
+      this.color = obj.color;
+    }
   }
 
   tick() {
