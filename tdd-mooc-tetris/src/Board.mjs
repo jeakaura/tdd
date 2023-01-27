@@ -1,6 +1,7 @@
 export class Board {
   width;
   height;
+  falling = false;
 
   constructor(width, height) {
     this.width = width;
@@ -8,9 +9,22 @@ export class Board {
   }
 
   toString() {
-    return `...
+    if (this.falling) {
+      return `.${this.color}.
 ...
 ...
 `;
+    } else {
+      return `...
+...
+...
+`;
+    }
+    
+  }
+
+  drop(obj) {
+    this.falling = true;
+    this.color = obj.color;
   }
 }
